@@ -1,0 +1,25 @@
+﻿@{ Layout = "/Pages/Shared/_LayoutCMS.cshtml"; }
+<div class="container-fluid px-xl-5">
+    <section class="py-5">
+        <div class="row">
+            <div class="col-12">
+                <h2>Gerenciamento de conta</h2>
+                <div>
+                    <h4>Altere as configurações da sua conta aqui</h4>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <partial name="_ManageNav" />
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

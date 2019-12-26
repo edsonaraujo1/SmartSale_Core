@@ -1,0 +1,13 @@
+﻿@inject SignInManager<UsuarioApp> SignInManager
+@{ var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any(); }
+<ul class="nav flex-column">
+    <li class="nav-item pb-1"><a asp-page="./Index" class="btn @ManageNavPages.IndexNavClass(ViewContext) btn-block">Perfil</a></li>
+    <li class="nav-item pb-1"><a id="change-password" asp-page="./ChangePassword" class="btn @ManageNavPages.ChangePasswordNavClass(ViewContext) btn-block">Senha</a></li>
+    @if (hasExternalLogins)
+    {
+        <li class="nav-item pb-1"><a id="external-login" asp-page="./ExternalLogins" class="btn @ManageNavPages.ExternalLoginsNavClass(ViewContext) btn-block">Logins externos</a></li>
+    }
+    @*<li class="nav-item pb-1"><a asp-page="./TwoFactorAuthentication" class="btn @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) btn-block">Autenticação dupla</a></li>*@
+    <li class="nav-item pb-1"><a asp-page="./PersonalData" class="btn @ManageNavPages.PersonalDataNavClass(ViewContext) btn-block">Dados pessoais</a></li>
+    <li class="nav-item pb-1"><a asp-page="./GerenciamentoRedesSociais" class="btn @ManageNavPages.GerenciamentoRedesSociaisNavClass(ViewContext) btn-block">Redes Sociais</a></li>
+</ul>

@@ -1,0 +1,240 @@
+﻿@page
+@using Microsoft.EntityFrameworkCore
+@model GerenciamentoRedesSociaisModel
+@inject SmartSale.Data.ApplicationDbContext _contexto
+@{
+    ViewData["Title"] = "GERENCIAMENTO DE REDES SOCIAIS";
+    var _appconfig = new SmartSale.Models.AppPerfil();
+    try
+    {
+        _appconfig = _contexto.AppPerfil.FirstOrDefault();
+    }
+    catch (Exception) { }
+}
+<style>
+    .sweet-alert {
+        background-color: rgba(255, 255, 255, .95);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        max-width: 80%;
+        min-height: 100%;
+        padding: 17px;
+        border-radius: 5px;
+        text-align: center;
+        position: fixed;
+        right: 0px;
+        bottom: 0px;
+        margin-left: auto;
+        margin-top: auto;
+        overflow: hidden;
+        display: none;
+        z-index: 99999;
+        border: 0.5px solid rgba(20, 20, 20,.2);
+        box-shadow: 0px 40px 130px rgba(0,0,0,.6);
+    }
+
+    .sa-button-container {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        margin: initial;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+        .sa-button-container button {
+            display: block;
+            margin: auto auto;
+            text-align: center;
+        }
+
+    .sweet-alert button.cancel {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+        .sweet-alert button.cancel:hover {
+            background-color: #dc3545;
+        }
+</style>
+<section class="py-1">
+    <div class="row">
+        <div class="col-12">
+            <h4>@ViewData["Title"]</h4>
+            <hr />
+            <h4><i class="fab fa-instagram"></i> INSTAGRAM</h4>
+            @if (!string.IsNullOrEmpty(_appconfig.INSTAGRAM_CONTA_TOKEN) && Model.Modelo.data != null)
+            {
+                <i class="text-success italic" style="display:block;font-size:16px;font-weight:bold;">@Html.Raw(Model.Modelo.data.username)</i>
+                <a href="/perfil/gerenciamentocontas/instagram/token#access_token=@_appconfig.INSTAGRAM_CONTA_TOKEN" class="btn btn-success mb-0 lpcrud-novo-menu___">
+                    <img src="@Model.Modelo.data.profile_picture" style="width:28px;height:28px;border-radius:100%;margin-right:5px;" />
+                    @Html.Raw(Model.Modelo.data.is_business ? "<b><i class='fas fa-city'></i> CONTA EMPRESARIAL</b>" : "<b><i class='fas fa-hashtag'></i> CONTA COMUM</b'>")
+                </a>
+                <a href="https://www.instagram.com/accounts/manage_access/" target='_blank' class="btn btn-danger mb-0 lpcrud-novo-menu___">
+                    <img src="@Model.Modelo.data.profile_picture" style="width:28px;height:28px;border-radius:100%;margin-right:5px;" /> <i class="fas fa-eraser"></i> <b>REVOGAR ACESSO</b>
+                </a>
+            }
+            else
+            {
+                if (Model.ExisteCLIENTID)
+                {
+                    <a href="https://www.instagram.com/oauth/authorize/?client_id=@_appconfig.INSTAGRAM_CLIENTID&redirect_uri=@_appconfig.INSTAGRAM_REDIRECTURI&response_type=token&scope=basic+public_content+follower_list+comments+relationships+likes" class="btn btn-primary mb-0">
+                        <i class="fas fa-exclamation-triangle"></i> PERMITIR ACESSO
+                    </a>
+                }
+                else
+                {
+                    <h4 class="text-danger">
+                        <i class="fas fa-exclamation-circle"></i> MÓDULO EM MANUTENÇÃO
+                    </h4>
+                }
+            }
+
+            <hr />
+            <h4><i class="fab fa-facebook"></i> FACEBOOK</h4>
+            @*<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>*@
+            @*<a href="#" onclick="fb_login();"><i class="fab fa-facebook"></i> LOGAR</a>*@
+            <fb:login-button scope="public_profile,email,user_likes,user_friends,instagram_basic,user_photos,user_posts" onlogin="checkLoginState();"></fb:login-button>
+            <div id="status" hidden></div>
+            <div id="avatarfb" hidden></div>
+        </div>
+    </div>
+</section>
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $('.lpcrud-novo-menu').on('click', function (e) {
+            e.preventDefault();
+            url = $(this).attr('href');
+            swal({
+                title: '<iframe id="frm_lpcrud_menu" name="frm_lpcrud_menu" width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="' + url + '"></iframe>',
+                content: '<iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="' + url + '"></iframe>',
+                html: '<iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="' + url + '"></iframe>',
+                cancelButtonText: 'Fechar',
+                showConfirmButton: false,
+                showCloseButton: false,
+                showCancelButton: true
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        //
+                    } else {
+                        //CarregaListaMenus('docsinvest', '#body-tbl-documentacao', idbloco);
+                        ////CarregaListaMenus('caract', '#body-tbl-caract', idlp);
+                        ////CarregaListaMenus('faq', '#body-tbl-faq', idlp);
+                    }
+                });
+        });
+    </script>
+    <script>
+        // This is called with the results from from FB.getLoginStatus().
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                testAPI();
+                console.log(response.authResponse.accessToken);
+            } else {
+                // The person is not logged into your app or we are unable to tell.
+                document.getElementById('status').innerHTML = 'Faça login com sua conta do facebook.';
+            }
+        }
+
+        // This function is called when someone finishes with the Login
+        // Button.  See the onlogin handler attached to it in the sample
+        // code below.
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+                console.log(response.authResponse.accessToken);
+            });
+        }
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '2428812227153388',
+                cookie: true,  // enable cookies to allow the server to access
+                // the session
+                xfbml: true,  // parse social plugins on this page
+                version: 'v3.3' // The Graph API version to use for the call
+            });
+
+            // Now that we've initialized the JavaScript SDK, we call
+            // FB.getLoginStatus().  This function gets the state of the
+            // person visiting this page and can return one of three states to
+            // the callback you provide.  They can be:
+            //
+            // 1. Logged into your app ('connected')
+            // 2. Logged into Facebook, but not your app ('not_authorized')
+            // 3. Not logged into Facebook and can't tell if they are logged into
+            //    your app or not.
+            //
+            // These three cases are handled in the callback function.
+
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+
+        };
+
+        // Load the SDK asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/pt_BR/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Here we run a very simple test of the Graph API after login is
+        // successful.  See statusChangeCallback() for when this call is made.
+        function testAPI() {
+            //console.log('Bem-vindo!  Recuperando seus dados... ');
+            FB.api('/me', function (response) {
+                console.log("EU");
+                //console.log('Logado com sucesso como ' + response.name);
+                if (response.name !== null)
+                    document.getElementById('status').innerHTML = 'Você está logado como <b>' + response.name + '</b>';
+                console.log(JSON.stringify(response));
+                console.log("-x-x-x-x-x-x-x-x");
+            });
+
+            FB.api('/me/photos', function (imagens) {
+                console.log("FOTOS");
+                console.log(imagens);
+                console.log("-x-x-x-x-x-x-x-x");
+            });
+
+            FB.api('/me/picture', 'GET', { "redirect": "false" },
+                function (response) {
+                    if (!response.error.message)
+                        $("#avatarfb").html("<img src='" + response.data.url + "'/>")
+                }
+            );
+
+            //FB.api('/me/friends', 'GET', {"redirect":"false"},
+            //    function (response) {
+            //        console.log("AMIGOS");
+            //        console.log(response);
+            //        console.log("-x-x-x-x-x-x-x-x");
+            //    }
+            //);
+
+            FB.api('/me/feed', 'GET', { "redirect": "false" },
+                function (response) {
+                    console.log("FEED");
+                    console.log(response);
+                    console.log("-x-x-x-x-x-x-x-x");
+                }
+            );
+        }
+    </script>
+}
