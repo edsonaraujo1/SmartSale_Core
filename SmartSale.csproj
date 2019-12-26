@@ -1,0 +1,180 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-House2Invest-8ED18EBA-7CBC-4BD2-B562-DDD8AC733D2E</UserSecretsId>
+    <Authors>Depois da Linha</Authors>
+    <Company>EndToEnd</Company>
+    <Description>Plataforma de vendas da EndToEnd</Description>
+    <Copyright>Depois da Linha</Copyright>
+    <ApplicationInsightsResourceId>/subscriptions/1bd47118-8fa5-46d7-a51c-4ff4089108d5/resourcegroups/dpslin_AppInsights/providers/microsoft.insights/components/smartsale</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/1bd47118-8fa5-46d7-a51c-4ff4089108d5/resourcegroups/dpslin_AppInsights/providers/microsoft.insights/components/smartsale</ApplicationInsightsAnnotationResourceId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Cognitive.LUIS.Programmatic\**" />
+    <Compile Remove="docs\**" />
+    <Compile Remove="Pages\blocoCRUDItemDoc\**" />
+    <Compile Remove="Pages\BlocosProjInvestValor\**" />
+    <Compile Remove="Pages\BlocosProjInvest\**" />
+    <Compile Remove="Pages\CMSModeloDoc\**" />
+    <Compile Remove="Pages\Documentacao\**" />
+    <Compile Remove="Pages\SalaChat\**" />
+    <Compile Remove="wwwroot\docs\**" />
+    <Compile Remove="wwwroot\temas\celine\**" />
+    <Compile Remove="wwwroot\temas\dwebchat\**" />
+    <Compile Remove="wwwroot\temas\sirene\**" />
+    <Content Remove="Cognitive.LUIS.Programmatic\**" />
+    <Content Remove="docs\**" />
+    <Content Remove="Pages\blocoCRUDItemDoc\**" />
+    <Content Remove="Pages\BlocosProjInvestValor\**" />
+    <Content Remove="Pages\BlocosProjInvest\**" />
+    <Content Remove="Pages\CMSModeloDoc\**" />
+    <Content Remove="Pages\Documentacao\**" />
+    <Content Remove="Pages\SalaChat\**" />
+    <Content Remove="wwwroot\docs\**" />
+    <Content Remove="wwwroot\temas\celine\**" />
+    <Content Remove="wwwroot\temas\dwebchat\**" />
+    <Content Remove="wwwroot\temas\sirene\**" />
+    <EmbeddedResource Remove="Cognitive.LUIS.Programmatic\**" />
+    <EmbeddedResource Remove="docs\**" />
+    <EmbeddedResource Remove="Pages\blocoCRUDItemDoc\**" />
+    <EmbeddedResource Remove="Pages\BlocosProjInvestValor\**" />
+    <EmbeddedResource Remove="Pages\BlocosProjInvest\**" />
+    <EmbeddedResource Remove="Pages\CMSModeloDoc\**" />
+    <EmbeddedResource Remove="Pages\Documentacao\**" />
+    <EmbeddedResource Remove="Pages\SalaChat\**" />
+    <EmbeddedResource Remove="wwwroot\docs\**" />
+    <EmbeddedResource Remove="wwwroot\temas\celine\**" />
+    <EmbeddedResource Remove="wwwroot\temas\dwebchat\**" />
+    <EmbeddedResource Remove="wwwroot\temas\sirene\**" />
+    <None Remove="Cognitive.LUIS.Programmatic\**" />
+    <None Remove="docs\**" />
+    <None Remove="Pages\blocoCRUDItemDoc\**" />
+    <None Remove="Pages\BlocosProjInvestValor\**" />
+    <None Remove="Pages\BlocosProjInvest\**" />
+    <None Remove="Pages\CMSModeloDoc\**" />
+    <None Remove="Pages\Documentacao\**" />
+    <None Remove="Pages\SalaChat\**" />
+    <None Remove="wwwroot\docs\**" />
+    <None Remove="wwwroot\temas\celine\**" />
+    <None Remove="wwwroot\temas\dwebchat\**" />
+    <None Remove="wwwroot\temas\sirene\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ChatHub.cs" />
+    <Compile Remove="HelperAzure.cs" />
+    <Compile Remove="HelpersProjeto.cs" />
+    <Compile Remove="JobProgressHub.cs" />
+    <Compile Remove="ListaPaginada.cs" />
+    <Compile Remove="Pages\ConfigApp\Delete.cshtml.cs" />
+    <Compile Remove="Pages\ConfigAzure\Delete.cshtml.cs" />
+    <Compile Remove="Pages\Config\Delete.cshtml.cs" />
+    <Compile Remove="Pages\DocInvestVisu.cshtml.cs" />
+    <Compile Remove="Pages\SalaVIP.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\ConfigApp\Delete.cshtml" />
+    <Content Remove="Pages\ConfigAzure\Delete.cshtml" />
+    <Content Remove="Pages\Config\Delete.cshtml" />
+    <Content Remove="Pages\DocInvestVisu.cshtml" />
+    <Content Remove="Pages\SalaVIP.cshtml" />
+    <Content Remove="wwwroot\App_offline.htm" />
+    <Content Remove="wwwroot\ExemploChat.html" />
+    <Content Remove="wwwroot\lib\rangeslider\rangeslider.js-2.3.0.zip" />
+    <Content Remove="wwwroot\temas\cms\vendor\fontawesome-free-5.6.3-web.zip" />
+    <Content Remove="wwwroot\temas\cms\vendor\owl.carousel\LICENSE" />
+    <Content Remove="wwwroot\temas\cms\vendor\owl.carousel\README.md" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\.gitattributes" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\.gitignore" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\.travis.yml" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\bower.json" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\CONTRIBUTING.md" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\dist\LICENSE" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\dist\README.md" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\Gruntfile.js" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\ISSUE_TEMPLATE.md" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\LICENSE" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\package-lock.json" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\package.json" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\README.md" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\ROADMAP.md" />
+    <Content Remove="wwwroot\temas\cms\vendor\OwlCarousel2-2.3.4\_config.json" />
+    <Content Remove="wwwroot\wwwroot.rar" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="_v1.rar" />
+    <None Remove="_v1_LIMPO_001.rar" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\temas\lp\landing\bower_components\fontawesome\css\font-awesome.css" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\fontawesome\css\font-awesome.min.css" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\fontawesome\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\material-design-iconic-font\dist\css\material-design-iconic-font.css" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\material-design-iconic-font\dist\css\material-design-iconic-font.min.css" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="wwwroot\temas\lp\landing\bower_components\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Font.woff" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\App_offline.htm" />
+    <None Include="wwwroot\temas\lp\landing\bower_components\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\temas\lp\landing\bower_components\fontawesome\css\font-awesome.css.map" />
+    <None Include="wwwroot\temas\lp\landing\bower_components\fontawesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\temas\lp\landing\bower_components\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\temas\lp\landing\bower_components\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\temas\lp\landing\bower_components\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\temas\lp\landing\bower_components\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Font.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.7" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.7.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.Web" Version="2.10.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="3.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="wwwroot\temas\dpslintm1\assets\css\urbeme\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="cerne.depoisdalinha">
+      <HintPath>Bibliotecas\cerne.depoisdalinha.dll</HintPath>
+    </Reference>
+    <Reference Include="dpslin.cognitivo.luis">
+      <HintPath>Bibliotecas\dpslin.cognitivo.luis.dll</HintPath>
+    </Reference>
+    <Reference Include="InstagramApiSharp">
+      <HintPath>Bibliotecas\InstagramApiSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Shared\_LayoutCMS.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+</Project>
